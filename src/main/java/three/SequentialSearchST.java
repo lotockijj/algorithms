@@ -21,7 +21,7 @@ public class SequentialSearchST <Key, Value>{
     }
 
     public Value get(Key key) { // Search for key, return associated value.
-        if(key == cachingNode.key){
+        if(cachingNode != null && key == cachingNode.key){
             return cachingNode.val;
         }
         for (Node x = first; x != null; x = x.next)
@@ -33,7 +33,6 @@ public class SequentialSearchST <Key, Value>{
     public void put(Key key, Value val) { // Search for key. Update value if found; grow table if new.
         if(cachingNode != null && key == cachingNode.key){
             cachingNode.val = val;
-            System.out.println("It works");
             return;
         }
         for (Node x = first; x != null; x = x.next)
@@ -89,5 +88,9 @@ public class SequentialSearchST <Key, Value>{
             }
         }
         return false;
+    }
+
+    public Node getFirst(){
+        return first;
     }
 }
