@@ -2,6 +2,10 @@ package three.four;
 
 import three.SequentialSearchST;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class SeparateChainingHashST<Key, Value> {
     private int N; // number of key-value pairs
     private int M; // hash table size
@@ -31,7 +35,10 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     public Iterable<Key> keys(){
-        return null;
+        return Arrays.asList(st).stream()
+                .map(SequentialSearchST::keys)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 //  See Exercise 3.4.19.
 }

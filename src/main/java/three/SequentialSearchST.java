@@ -64,6 +64,10 @@ public class SequentialSearchST <Key, Value>{
         return nodeKeys;
     }
 
+    public List<Value> values(){
+        return null;
+    }
+
     public boolean delete(Key key){
         boolean result = false;
         Node temp = first;

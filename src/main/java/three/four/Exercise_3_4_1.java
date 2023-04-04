@@ -20,7 +20,5 @@ public class Exercise_3_4_1 {
                 separateChainingHashST.put(keysAsString[i], separateChainingHashST.get(keysAsString[i]) + 1);
             }
         }
-        System.out.println("22");
-
     }
 }
