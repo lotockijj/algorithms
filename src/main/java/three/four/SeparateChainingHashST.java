@@ -54,5 +54,9 @@ public class SeparateChainingHashST<Key, Value> {
         }
         return countOfEmptyLists;
     }
+
+    public void delete(Key key) {
+        st[hash(key)].delete(key);
+    }
 //  See Exercise 3.4.19.
 }
