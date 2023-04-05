@@ -40,5 +40,19 @@ public class SeparateChainingHashST<Key, Value> {
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
+
+    public int getSize(){
+        return st.length;
+    }
+
+    public int getEmptyLists(){
+        int countOfEmptyLists = 0;
+        for (int i = 0; i < st.length; i++) {
+            if(st[i].size() == 0){
+                countOfEmptyLists++;
+            }
+        }
+        return countOfEmptyLists;
+    }
 //  See Exercise 3.4.19.
 }
