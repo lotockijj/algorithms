@@ -19,9 +19,11 @@ import java.util.Objects;
 public class Exercise_3_4_10__3_4_11 {
 
     public static void main(String[] args) {
-        /*LinearProbingHashST_3_4_10<String, Integer> linearProbingHashST_3_4_10 = fillSeparateChainingHashST(16);
+        LinearProbingHashST_3_4_10<String, Integer> linearProbingHashST_3_4_10 = fillSeparateChainingHashST(16);
         Object[] keys = linearProbingHashST_3_4_10.getKeys();
-        Arrays.stream(keys).filter(Objects::nonNull).forEach(e -> System.out.print(e + ",  "));*/
+        Arrays.stream(keys).filter(Objects::nonNull).forEach(e -> System.out.print(e + ",  "));
+
+        System.out.println();
 
         LinearProbingHashST_3_4_10<String, Integer> linearProbingHashST_3_4_11 = fillSeparateChainingHashST(4);
         Object[] keys2= linearProbingHashST_3_4_11.getKeys();
