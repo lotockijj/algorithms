@@ -23,6 +23,16 @@ public class LinearProbingHashST_3_4_10 <Key, Value>{
     private void resize(int cap) {
         LinearProbingHashST_3_4_10<Key, Value> t;
         t = new LinearProbingHashST_3_4_10<Key, Value>(cap);
+        Key[] keysCopy = (Key[]) new Object[cap];
+        for (int i = 0; i < keys.length; i++) {
+            keysCopy[i] = keys[i];
+        }
+        Value[] valuesCopy = (Value[]) new Object[cap];
+        for (int i = 0; i < vals.length; i++) {
+            valuesCopy[i] = vals[i];
+        }
+        keys = keysCopy;
+        vals = valuesCopy;
         for (int i = 0; i < M; i++)
             if (keys[i] != null)
                 t.put(keys[i], vals[i]);
@@ -32,7 +42,7 @@ public class LinearProbingHashST_3_4_10 <Key, Value>{
     }
 
     public void put(Key key, Value val) {
-        if (N >= M/2) resize(2*M); // double M (see text)
+        if (N >= M/2 || keys.length <= M) resize(2*M); // double M (see text)
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M)
             if (keys[i].equals(key)) { vals[i] = val; return; }
