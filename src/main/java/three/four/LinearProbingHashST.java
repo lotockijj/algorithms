@@ -97,4 +97,8 @@ public class LinearProbingHashST<Key, Value> {
     public double getAverageCostOfSearchHit() {
         return averageCostOfSearchHit;
     }
+
+    public double getAverageCostOfSearchSearchMiss() {
+        return 1/averageCostOfSearchHit;
+    }
 }
