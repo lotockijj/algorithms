@@ -65,7 +65,13 @@ public class SequentialSearchST <Key, Value>{
     }
 
     public List<Value> values(){
-        return null;
+        List<Value> nodeValues = new ArrayList<>();
+        Node temp = first;
+        while(temp != null){
+            nodeValues.add(temp.val);
+            temp = temp.next;
+        }
+        return nodeValues;
     }
 
     public boolean delete(Key key){
