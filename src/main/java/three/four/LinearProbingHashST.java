@@ -1,5 +1,8 @@
 package three.four;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class LinearProbingHashST<Key, Value> {
     private int N; // number of key-value pairs in the table
     private int M = 16; // size of linear-probing table
@@ -71,5 +74,13 @@ public class LinearProbingHashST<Key, Value> {
 
     private boolean contains(Key key) {
         return get(key) != null;
+    }
+
+    public List<Key> getKeys() {
+        return Arrays.asList(keys);
+    }
+
+    public List<Value> getVals() {
+        return Arrays.asList(vals);
     }
 }

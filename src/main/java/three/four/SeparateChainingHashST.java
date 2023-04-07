@@ -41,6 +41,13 @@ public class SeparateChainingHashST<Key, Value> {
                 .collect(Collectors.toList());
     }
 
+    public List<Value> values(){
+        return Arrays.asList(st).stream()
+                .map(SequentialSearchST::values)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
     public int getSize(){
         return st.length;
     }
