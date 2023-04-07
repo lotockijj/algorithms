@@ -9,6 +9,8 @@ public class LinearProbingHashST<Key, Value> {
     private Key[] keys; // the keys
     private Value[] vals; // the values
 
+    private double averageCostOfSearchHit;
+
     public LinearProbingHashST() {
         keys = (Key[]) new Object[M];
         vals = (Value[]) new Object[M];
@@ -38,16 +40,24 @@ public class LinearProbingHashST<Key, Value> {
         if (N >= M/2) resize(2*M); // double M (see text)
         int i;
         for (i = hash(key); keys[i] != null; i = (i + 1) % M)
-            if (keys[i].equals(key)) { vals[i] = val; return; }
+            if (keys[i].equals(key)) {
+                vals[i] = val; return;
+            }
         keys[i] = key;
         vals[i] = val;
         N++;
     }
 
     public Value get(Key key) {
-        for (int i = hash(key); keys[i] != null; i = (i + 1) % M)
-            if (keys[i].equals(key))
+        int countOfMiss = 0;
+        averageCostOfSearchHit = 1.0;
+        for (int i = hash(key); keys[i] != null; i = (i + 1) % M) {
+            countOfMiss++;
+            if (keys[i].equals(key)) {
+                averageCostOfSearchHit = countOfMiss > 0 ? averageCostOfSearchHit/countOfMiss : 0.0;
                 return vals[i];
+            }
+        }
         return null;
     }
 
@@ -82,5 +92,9 @@ public class LinearProbingHashST<Key, Value> {
 
     public List<Value> getVals() {
         return Arrays.asList(vals);
+    }
+
+    public double getAverageCostOfSearchHit() {
+        return averageCostOfSearchHit;
     }
 }
