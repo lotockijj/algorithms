@@ -41,6 +41,13 @@ public class SeparateChainingHashST<Key, Value> {
                 .collect(Collectors.toList());
     }
 
+    public List<Key> keysAsList(){
+        return Arrays.asList(st).stream()
+                .map(SequentialSearchST::keys)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
     public List<Value> values(){
         return Arrays.asList(st).stream()
                 .map(SequentialSearchST::values)
@@ -65,5 +72,10 @@ public class SeparateChainingHashST<Key, Value> {
     public void delete(Key key) {
         st[hash(key)].delete(key);
     }
-//  See Exercise 3.4.19.
+
+    public SequentialSearchST<Key, Value>[] getSt() {
+        return st;
+    }
+
+    //  See Exercise 3.4.19.
 }
