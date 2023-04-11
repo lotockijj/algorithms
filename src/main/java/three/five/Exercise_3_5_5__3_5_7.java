@@ -6,5 +6,5 @@ where keys are primitive int and double types, respectively. (Convert generics t
 in the code of RedBlackBST.) Test your solution with a version of SparseVector as a client.
  */
 
-public class Exercise_3_5_5 {
+public class Exercise_3_5_5__3_5_7 {
 }
