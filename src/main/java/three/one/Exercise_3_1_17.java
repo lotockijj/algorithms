@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /* Implement the floor() method for BinarySearchST.
                        09:01:10 Houston
@@ -6,6 +6,8 @@ package three;
                        09:10:11 Seattle
 
  */
+
+import three.BinarySearchST;
 
 public class Exercise_3_1_17 {
 

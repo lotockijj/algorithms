@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /* Memory usage. Compare the memory usage of BinarySearchST with that of
    SequentialSearchST for N key-value pairs, under the assumptions described in Section 1.4.
@@ -9,6 +9,7 @@ package three;
 
 import edu.princeton.cs.algs4.BinarySearchST;
 import edu.princeton.cs.algs4.In;
+import three.SequentialSearchST;
 
 import java.io.FileInputStream;
 import java.io.IOException;

@@ -1,7 +1,9 @@
-package three;
+package three.one;
 
 /*   Give a trace of the process of inserting the keys E A S Y Q U E S T I O N into
      an initially empty table using BinarySearchST. How many compares are involved? */
+
+import three.BinarySearchST;
 
 public class Exercise_3_1_11 {
 

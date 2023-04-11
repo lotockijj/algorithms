@@ -1,10 +1,11 @@
-package three;
+package three.one;
 
 /*Add code to FrequencyCounter to keep track of the last call to put(). Print the
 last word inserted and the number of words that were processed in the input stream
 prior to this insertion. Run your program for tale.txt with length cutoffs 1, 8, and 10.*/
 
 import edu.princeton.cs.algs4.ST;
+import three.FrequencyCounter;
 
 public class Exercise_3_1_9 {
 

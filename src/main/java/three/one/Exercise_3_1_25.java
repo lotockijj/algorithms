@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /* Software caching. Since the default implementation of contains() calls get(),
 the inner loop of FrequencyCounter
@@ -8,6 +8,9 @@ leads to two or three searches for the same key. To enable clear client code lik
 without sacrificing efficiency, we can use a technique known as software caching, where
 we save the location of the most recently accessed key in an instance variable. Modify
 SequentialSearchST and BinarySearchST to take advantage of this idea.*/
+
+import three.BinarySearchST;
+import three.SequentialSearchST;
 
 import java.io.FileInputStream;
 import java.io.IOException;

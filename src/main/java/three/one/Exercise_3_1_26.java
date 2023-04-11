@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /*Frequency count from a dictionary. Modify FrequencyCounter to take the
 name of a dictionary file as its argument, count frequencies of the words from standard

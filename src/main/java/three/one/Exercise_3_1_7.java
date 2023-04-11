@@ -1,9 +1,10 @@
-package three;
+package three.one;
 
 /*  What is the average number of distinct keys that FrequencyCounter will find
     among N random nonnegative integers less than 1,000, for N=10, 102, 103, 104, 105, and 106? */
 
 import edu.princeton.cs.algs4.ST;
+import three.FrequencyCounter;
 
 import java.util.ArrayList;
 import java.util.List;

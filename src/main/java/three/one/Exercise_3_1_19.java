@@ -1,9 +1,10 @@
-package three;
+package three.one;
 
 /* Modify FrequencyCounter to print all of the values having the highest
    frequency of occurrence, not just one of them. Hint : Use a Queue. */
 
 import edu.princeton.cs.algs4.ST;
+import three.FrequencyCounter;
 
 public class Exercise_3_1_19 {
 

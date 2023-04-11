@@ -1,8 +1,11 @@
-package three;
+package three.one;
 
 /* Modify BinarySearchST to maintain one array of Item objects that contain
    keys and values, rather than two parallel arrays. Add a constructor that takes an array of
    Item values as argument and uses mergesort to sort the array.*/
+
+import three.BinarySearchST_Item;
+import three.Item;
 
 import java.util.Random;
 

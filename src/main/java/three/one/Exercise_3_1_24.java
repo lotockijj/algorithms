@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /*Interpolation search. Suppose that arithmetic operations are allowed on keys
 (for example, they may be Double or Integer values). Write a version of binary search

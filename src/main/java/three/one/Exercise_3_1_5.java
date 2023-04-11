@@ -1,6 +1,8 @@
-package three;
+package three.one;
 
 //Implement size(), delete(), and keys() for SequentialSearchST.
+
+import three.SequentialSearchST;
 
 import java.util.List;
 

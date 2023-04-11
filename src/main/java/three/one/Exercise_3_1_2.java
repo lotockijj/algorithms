@@ -1,7 +1,9 @@
-package three;
+package three.one;
 
 /*  Develop a symbol-table implementation ArrayST that uses an (unordered) array
     as the underlying data structure to implement our basic symbol-table API. */
+
+import three.ArrayST;
 
 import java.util.Random;
 

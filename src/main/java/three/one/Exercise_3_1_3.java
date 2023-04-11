@@ -1,7 +1,9 @@
-package three;
+package three.one;
 
 /* Develop a symbol-table implementation OrderedSequentialSearchST that uses an ordered linked list
    as the underlying data structure to implement our ordered symbol-table API. */
+
+import three.OrderedSequentialSearchST;
 
 import java.util.Random;
 

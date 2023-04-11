@@ -1,6 +1,8 @@
-package three;
+package three.one;
 
 // Implement the delete() method for BinarySearchST.
+
+import three.BinarySearchST;
 
 public class Exercise_3_1_16 {
 

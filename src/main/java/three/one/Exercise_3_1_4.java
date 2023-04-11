@@ -1,4 +1,4 @@
-package three;
+package three.one;
 
 /* Develop Time and Event ADTs that allow processing of data as in the example illustrated on page 367:
 min(), get(09:00:13), floor(09:05:00), select(7), keys(09:15:00, 09:25:00),
@@ -23,6 +23,8 @@ rank(09:10:25) is 7
 09:36:14 Seattle
 09:37:44 Phoenix
 */
+
+import three.OrderedSequentialSearchST;
 
 import java.util.ArrayList;
 import java.util.Collections;
