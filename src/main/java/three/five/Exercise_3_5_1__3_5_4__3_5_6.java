@@ -8,7 +8,7 @@ primitive int and double types, respectively. (Convert generics to primitive typ
 the code of LinearProbingHashST.)
 */
 
-public class Exercise_3_5_1__3_5_4 {
+public class Exercise_3_5_1__3_5_4__3_5_6 {
 
     public static void main(String[] args) {
         ST st = new ST();
