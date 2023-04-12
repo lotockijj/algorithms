@@ -7,7 +7,7 @@ and remove all nodes in the tree that have keys equal to the given key for delet
 
 import java.util.List;
 
-public class Exercise_3_5_9_ {
+public class Exercise_3_5_9 {
 
     public static void main(String[] args) {
         BST_3_5_9<Integer, Integer> bst_3_5_9 = new BST_3_5_9();
