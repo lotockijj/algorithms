@@ -1,0 +1,7 @@
+0,1,2
+read,write,anything
+whatever,whatever,whatever
+read,man,woman
+read,men,women
+try,harder,all
+any,something,do
