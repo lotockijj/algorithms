@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Exercise_3_5_12 {
+public class Exercise_3_5_12__3_5_13 {
     private static final String FILE_PATH = "C:\\Users\\Роман\\Downloads\\alglorithms2\\exercise_3_5_12.txt";
 
     public static void main(String[] args) {
@@ -26,9 +26,9 @@ public class Exercise_3_5_12 {
         }
         List<String> keys = hashST358.getKeys();
         List<String> vals = hashST358.getVals();
-        for (int i = 0, j = 1; i < keys.size(); i++, j += 2) {
+        for (int i = 0; i < keys.size(); i++) {
             String key = keys.get(i);
-            String values = vals.get(j - 1) + ":" + vals.get(j);
+            String values = vals.get(i*2) + ":" + vals.get(i*2 + 1);
             System.out.println(key + " -> " + values);
         }
     }
