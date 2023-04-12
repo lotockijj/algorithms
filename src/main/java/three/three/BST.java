@@ -1,8 +1,10 @@
 package three.three;
 
+import edu.princeton.cs.algs4.Queue;
+
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
-import java.util.Queue;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root; // root of BST
@@ -167,17 +169,17 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     public Iterable<Key> keys(Key lo, Key hi){
-        Queue<Key> queue = new LinkedList<>();
+        Queue<Key> queue = new Queue<Key>();
         keys(root, queue, lo, hi);
         return queue;
     }
 
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi){
-        if(x == null) return;
+    private void keys(Node x, edu.princeton.cs.algs4.Queue<Key> queue, Key lo, Key hi) {
+        if (x == null) return;
         int cmplo = lo.compareTo(x.key);
         int cmphi = hi.compareTo(x.key);
-        if(cmplo < 0 ) keys(x.left, queue, lo, hi);
-        if(cmplo <= 0 && cmphi >= 0) queue.poll();
-        if(cmphi > 0) keys(x.right, queue, lo, hi);
+        if (cmplo < 0) keys(x.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+        if (cmphi > 0) keys(x.right, queue, lo, hi);
     }
 }
