@@ -1,11 +1,9 @@
 package three.five;
 
-import edu.princeton.cs.algs4.SequentialSearchST;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultiSET <Key>{
+public class MultiSET <Key> {
     private Node first; // first node in the linked list
 
     private class Node { // linked-list node
@@ -39,10 +37,10 @@ public class MultiSET <Key>{
         return count;
     }
 
-    public List<Key> keys(){
+    public List<Key> keys() {
         List<Key> nodeKeys = new ArrayList<>();
         Node temp = first;
-        while (temp != null){
+        while (temp != null) {
             nodeKeys.add(temp.key);
             temp = temp.next;
         }
@@ -63,7 +61,7 @@ public class MultiSET <Key>{
         return x;
     }
 
-    public boolean contains(Key key){
+    public boolean contains(Key key) {
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 return true;
@@ -72,7 +70,55 @@ public class MultiSET <Key>{
         return false;
     }
 
-    public Node getFirst(){
+    public Node getFirst() {
         return first;
+
+    }
+
+    public Key getFirstKey() {
+        return first.key;
+    }
+
+    public MultiSET<Key> universe(Key[] universe) {
+        MultiSET<Key> multiSET = new MultiSET<>();
+        for (int i = 0; i < universe.length; i++) {
+            multiSET.put(universe[i]);
+        }
+        return multiSET;
+    }
+
+    public MultiSET<Key> complement(Key[] complement) { //set of keys in the universe that are not in this set
+        MultiSET<Key> multiSET = new MultiSET<>();
+        for (int i = 0; i < complement.length; i++) {
+            Key key = complement[i];
+            if (!contains(key)) {
+                multiSET.put(key);
+            }
+        }
+        return multiSET;
+    }
+
+    public void union(MultiSET<Key> a) { //put any keys from a into the set that are not already there
+        List<Key> keys = a.keys();
+        for (int i = 0; i < keys.size(); i++) {
+            Key key = keys.get(i);
+            if (!contains(key)) {
+                put(key);
+            }
+        }
+    }
+
+    public void intersection(MultiSET<Key> a) { //remove any keys from this set that are not in a
+        List<Key> keys = keys();
+        for (int i = 0; i < keys.size(); i++) {
+            Key key = keys.get(i);
+            if(!a.contains(key)){
+                delete(key);
+            }
+        }
+    }
+
+    public boolean isEmpty(){
+        return size() == 0;
     }
 }

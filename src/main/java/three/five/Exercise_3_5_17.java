@@ -13,6 +13,8 @@ API MathSET for processing (mutable) mathematical sets:
         boolean contains(Key key) //is key in the set?
         boolean isEmpty() //is the set empty?
         int size() //number of keys in the set
+
+Use a symbol table . Extra credit : Represent sets with arrays of boolean values.
  */
 
 public class Exercise_3_5_17 {
