@@ -1,5 +1,7 @@
 package three.five;
 
+import edu.princeton.cs.algs4.SequentialSearchST;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,20 +49,18 @@ public class MultiSET <Key>{
         return nodeKeys;
     }
 
-    public boolean delete(Key key){
-        boolean result = false;
-        Node temp = first;
-        Node previousNode = null;
-        while (temp != null){
-            if(temp.key == key){
-                previousNode.next = temp.next;
-                result = true;
-                break;
-            }
-            previousNode = temp;
-            temp = temp.next;
+    public void delete(Key key) {
+        if (key == null) throw new IllegalArgumentException("argument to delete() is null");
+        first = delete(first, key);
+    }
+
+    private Node delete(Node x, Key key) {
+        if (x == null) return null;
+        if (key.equals(x.key)) {
+            return x.next;
         }
-        return result;
+        x.next = delete(x.next, key);
+        return x;
     }
 
     public boolean contains(Key key){
