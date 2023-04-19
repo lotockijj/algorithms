@@ -10,8 +10,24 @@ import java.util.List;
 
 public class Exercise_3_5_18 {
     private final static int LEN = 10;
+    private static final String[] stringsUpperCase = ("A B C D E F G H I J K L M N O P Q R S T U V W X Y Z").split(" ");
 
     public static void main(String[] args) {
+
+        BinarySearchMultiSET<String> binarySearchMultiSET = new BinarySearchMultiSET<>(LEN*LEN);
+        for (int i = 0; i < stringsUpperCase.length; i++) {
+            binarySearchMultiSET.put(stringsUpperCase[i]);
+        }
+        binarySearchMultiSET.put("A");
+        Comparable[] binaryKeys = binarySearchMultiSET.getKeys();
+        for (int i = 0; i < binaryKeys.length; i++) {
+            Comparable binaryKey = binaryKeys[i];
+            if(binaryKey != null){
+                System.out.print(binaryKey + ", ");
+            }
+        }
+
+        System.out.println();
 
         SeparateChainingMultiSET<String> separateChainingMultiSET = new SeparateChainingMultiSET<>();
         for (int i = 0; i < LEN; i++) {
@@ -34,7 +50,7 @@ public class Exercise_3_5_18 {
         List<Integer> vals = multiHashSET.getVals();
         for (int i = 0; i < keys.size(); i++) {
             if(keys.get(i) != null) {
-                //System.out.println(keys.get(i) + " -> " + vals.get(i));
+                System.out.println(keys.get(i) + " -> " + vals.get(i));
             }
         }
         MultiSET<String> multiSET = new MultiSET<>();
@@ -42,6 +58,6 @@ public class Exercise_3_5_18 {
             multiSET.put(i + 1 + "");
         }
         multiSET.put(1 + "");
-        //multiSET.keys().stream().forEach(System.out::println);
+        multiSET.keys().stream().forEach(System.out::println);
     }
 }
