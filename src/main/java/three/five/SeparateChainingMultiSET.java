@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SeparateChainingMultiSET <Key, Value> {
+public class SeparateChainingMultiSET <Key> {
     private int N; // number of key-value pairs
     private int M; // hash table size
-    private SequentialSearchST<Key, Value>[] st; // array of ST objects
+    private SequentialSearchST<Key, Integer>[] st; // array of ST objects
 
     public SeparateChainingMultiSET() {
         this(997);
@@ -17,7 +17,7 @@ public class SeparateChainingMultiSET <Key, Value> {
 
     public SeparateChainingMultiSET(int M) { // Create M linked lists.
         this.M = M;
-        st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[M];
+        st = (SequentialSearchST<Key, Integer>[]) new SequentialSearchST[M];
         for (int i = 0; i < M; i++)
             st[i] = new SequentialSearchST();
     }
@@ -26,12 +26,13 @@ public class SeparateChainingMultiSET <Key, Value> {
         return (key.hashCode() & 0x7fffffff) % M;
     }
 
-    public Value get(Key key) {
-        return (Value) st[hash(key)].get(key);
+    public Integer get(Key key) {
+        return (Integer) st[hash(key)].get(key);
     }
 
-    public void put(Key key, Value val) {
-        st[hash(key)].put(key, val);
+    public void put(Key key) {
+        int value = contains(key) ? st[hash(key)].get(key) + 1 : 1;
+        st[hash(key)].put(key, value);
     }
 
     public Iterable<Key> keys(){
@@ -48,7 +49,7 @@ public class SeparateChainingMultiSET <Key, Value> {
                 .collect(Collectors.toList());
     }
 
-    public List<Value> values(){
+    public List<Integer> values(){
         return Arrays.asList(st).stream()
                 .map(SequentialSearchST::values)
                 .flatMap(List::stream)
@@ -59,22 +60,16 @@ public class SeparateChainingMultiSET <Key, Value> {
         return st.length;
     }
 
-    public int getEmptyLists(){
-        int countOfEmptyLists = 0;
-        for (int i = 0; i < st.length; i++) {
-            if(st[i].size() == 0){
-                countOfEmptyLists++;
-            }
-        }
-        return countOfEmptyLists;
-    }
-
     public void delete(Key key) {
         st[hash(key)].delete(key);
     }
 
-    public SequentialSearchST<Key, Value>[] getSt() {
+    public SequentialSearchST<Key, Integer>[] getSt() {
         return st;
+    }
+
+    public boolean contains(Key key){
+        return st[hash(key)].contains(key);
     }
 
     //  See Exercise 3.4.19.

@@ -12,6 +12,19 @@ public class Exercise_3_5_18 {
     private final static int LEN = 10;
 
     public static void main(String[] args) {
+
+        SeparateChainingMultiSET<String> separateChainingMultiSET = new SeparateChainingMultiSET<>();
+        for (int i = 0; i < LEN; i++) {
+            separateChainingMultiSET.put(i + 1 + "");
+        }
+        separateChainingMultiSET.put(1 + "");
+        separateChainingMultiSET.put(1 + "");
+        List<String> keysSP = separateChainingMultiSET.keysAsList();
+        List<Integer> valuesSP = separateChainingMultiSET.values();
+        for (int i = 0; i < keysSP.size(); i++) {
+            System.out.println(keysSP.get(i) + " - " + valuesSP.get(i));
+        }
+
         MultiHashSET<String, Integer> multiHashSET = new MultiHashSET<>();
         for (int i = 0; i < LEN; i++) {
             multiHashSET.put(i + 1 + "", i + 1);
@@ -29,6 +42,6 @@ public class Exercise_3_5_18 {
             multiSET.put(i + 1 + "");
         }
         multiSET.put(1 + "");
-        multiSET.keys().stream().forEach(System.out::println);
+        //multiSET.keys().stream().forEach(System.out::println);
     }
 }
