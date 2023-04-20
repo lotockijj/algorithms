@@ -40,7 +40,6 @@ public class Exercise_3_5_21 {
             }
         }
         List<String> invertedValues = invertedLinearProbingHashST.getVals();
-        int firstLine = 5;
         for (int i = 0; i < invertedValues.size(); i++) {
             String s = invertedValues.get(i);
             if(s != null) {
