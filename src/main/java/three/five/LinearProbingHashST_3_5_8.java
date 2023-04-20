@@ -18,6 +18,7 @@ public class LinearProbingHashST_3_5_8 <Key, Value> {
     }
 
     public LinearProbingHashST_3_5_8(int M) {
+        this.M = M;
         keys = (Key[]) new Object[M];
         vals = new ArrayList[M];
     }
@@ -29,7 +30,7 @@ public class LinearProbingHashST_3_5_8 <Key, Value> {
     private void resize(int cap) {
         LinearProbingHashST_3_5_8<Key, Value> t;
         t = new LinearProbingHashST_3_5_8<>(cap);
-        for (int i = 0; i < M; i++)
+        for (int i = 0; i < cap; i++)
             if (keys[i] != null)
                 t.put(keys[i], vals[i]);
         keys = t.keys;
