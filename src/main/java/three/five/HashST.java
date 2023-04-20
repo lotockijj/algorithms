@@ -78,7 +78,7 @@ public class HashST {
         if (N > 0 && N == M/8) resize(M/2);
     }
 
-    private boolean contains(int key) {
+    public boolean contains(int key) {
         return get(key) != 0;
     }
 
@@ -88,6 +88,10 @@ public class HashST {
 
     public double[] getVals() {
         return vals;
+    }
+
+    public int size(){
+        return N;
     }
 
     public double getAverageCostOfSearchHit() {

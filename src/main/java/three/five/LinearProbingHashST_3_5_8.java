@@ -113,4 +113,8 @@ public class LinearProbingHashST_3_5_8 <Key, Value> {
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
+
+    public int size(){
+        return N;
+    }
 }
