@@ -65,6 +65,14 @@ public class BinarySearchSET <Key extends Comparable<Key>> {
         return keyResult;
     }
 
+    public boolean contains(Key key){
+        boolean cont = false;
+        if(get(key) != null){
+            cont = true;
+        }
+        return cont;
+    }
+
     public boolean isEmpty(){
         return N == 0;
     }
