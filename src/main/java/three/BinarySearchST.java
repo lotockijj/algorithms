@@ -1,6 +1,7 @@
 package three;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class BinarySearchST <Key extends Comparable<Key>, Value> {
     public static int countOfCompares = 0;
@@ -75,4 +76,21 @@ public class BinarySearchST <Key extends Comparable<Key>, Value> {
     public boolean isEmpty(){
         return false;
     }
+
+    private int getKeyLessThanSearchedKey(Key key){
+        int index = rank(key);
+        if(index < 1) return 0;
+        return index - 1;
+    }
+
+    public int getIntervalIndex(Key key){
+        int indexOfKeyLessThanSearchedKey = getKeyLessThanSearchedKey(key);
+        Key keyFromIndex = keys[indexOfKeyLessThanSearchedKey];
+        Value valueForThisKey = get(keys[indexOfKeyLessThanSearchedKey]);
+        if(keyFromIndex.compareTo(key) < 0 && ((Key)valueForThisKey).compareTo(key) > 0){
+            return indexOfKeyLessThanSearchedKey + NumberUtils.INTEGER_ONE;
+        }
+        return NumberUtils.INTEGER_MINUS_ONE;
+    }
+
 }
