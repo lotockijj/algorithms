@@ -40,7 +40,7 @@ public class SequentialSearchSET  <Key>{
         return count;
     }
 
-    public List<Key> keys(){
+    public List<Key> keys(){ // TODO return array instead of list !
         List<Key> nodeKeys = new ArrayList<>();
         Node temp = first;
         while (temp != null){
