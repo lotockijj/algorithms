@@ -1,0 +1,149 @@
+package four.one;
+
+import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.StdOut;
+import three.five.Bag;
+
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
+public class Graph {
+    private static final String NEWLINE = System.getProperty("line.separator");
+    private int V;
+    private int E;
+    private Bag<Integer>[] adj;
+
+    public Graph(int V) {
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
+        this.V = V;
+        this.E = 0;
+        adj = (Bag<Integer>[]) new Bag[V];
+        for (int v = 0; v < V; v++) {
+            adj[v] = new Bag<>();
+        }
+    }
+
+    public Graph(In in) {
+        if (in == null) throw new IllegalArgumentException("argument is null");
+        try {
+            this.V = in.readInt();
+            if (V < 0) throw new IllegalArgumentException("number of vertices in a Graph must be non-negative");
+            adj = (Bag<Integer>[]) new Bag[V];
+            for (int v = 0; v < V; v++) {
+                adj[v] = new Bag<>();
+            }
+            int E = in.readInt();
+            if (E < 0) throw new IllegalArgumentException("number of edges in a Graph must be non-negative");
+            for (int i = 0; i < E; i++) {
+                int v = in.readInt();
+                int w = in.readInt();
+                validateVertex(v);
+                validateVertex(w);
+                addEdge(v, w);
+            }
+        }
+        catch (NoSuchElementException e) {
+            throw new IllegalArgumentException("invalid input format in Graph constructor", e);
+        }
+    }
+
+    public Graph(Graph G) {
+        this.V = G.V();
+        this.E = G.E();
+        if (V < 0) throw new IllegalArgumentException("Number of vertices must be non-negative");
+        // update adjacency lists
+        adj = (Bag<Integer>[]) new Bag[V];
+        for (int v = 0; v < V; v++) {
+            adj[v] = new Bag<Integer>();
+        }
+
+        for (int v = 0; v < G.V(); v++) {
+            // reverse so that adjacency list is in same order as original
+            Stack<Integer> reverse = new Stack<Integer>();
+            for (int w : G.adj[v]) {
+                reverse.push(w);
+            }
+            for (int w : reverse) {
+                adj[v].add(w);
+            }
+        }
+    }
+
+    public int V() { //number of vertices
+        return V;
+    }
+
+    public int E() { //number of edges
+        return E;
+    }
+
+    private void validateVertex(int v) {
+        if (v < 0 || v >= V)
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
+    public void addEdge(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
+        E++;
+        adj[v].add(w);
+        adj[w].add(v);
+    }
+
+    public Iterable<Integer> adj(int v) {
+        validateVertex(v);
+        return adj[v];
+    }
+
+    public int degree(int v) {
+        validateVertex(v);
+        return adj[v].size();
+    }
+
+    public static int degree(Graph G, int v) {
+        int degree = 0;
+        for (int w : G.adj(v)) degree++;
+        return degree;
+    }
+
+    public static int maxDegree(Graph G) {
+        int max = 0;
+        for (int v = 0; v < G.V(); v++)
+            if (degree(G, v) > max)
+                max = degree(G, v);
+        return max;
+    }
+
+    public static int avgDegree(Graph G) {
+        return 2 * G.E() / G.V();
+    }
+
+    public static int numberOfSelfLoops(Graph G) {
+        int count = 0;
+        for (int v = 0; v < G.V(); v++)
+            for (int w : G.adj(v))
+                if (v == w) count++;
+        return count/2; // each edge counted twice
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(V + " vertices, " + E + " edges " + NEWLINE);
+        for (int v = 0; v < V; v++) {
+            s.append(v + ": ");
+            for (int w : adj[v]) {
+                s.append(w + " ");
+            }
+            s.append(NEWLINE);
+        }
+        return s.toString();
+    }
+
+    public static void main(String[] args) {
+        In in = new In("tinyGex2.txt");
+        //In in = new In("mediumG.txt");
+        //In in = new In("tinyG.txt");
+        Graph G = new Graph(in);
+        StdOut.println(G);
+    }
+}

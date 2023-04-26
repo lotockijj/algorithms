@@ -3,7 +3,7 @@ package three.five;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+// TODO doesn't work as expected for large inputs, something wrong with resising.
 public class RedBlackBST_3_5_10 <Key extends Comparable<Key>, Value> {
     private Node root;
     private static final boolean RED = true;
