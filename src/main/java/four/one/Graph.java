@@ -4,7 +4,9 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 import three.five.Bag;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Stack;
 
 public class Graph {
@@ -45,6 +47,39 @@ public class Graph {
         catch (NoSuchElementException e) {
             throw new IllegalArgumentException("invalid input format in Graph constructor", e);
         }
+    }
+
+    public Graph(Graph graph, boolean deepCopy){
+        this(graph.V);
+        adj = (Bag<Integer>[]) new Bag[graph.V];
+        for (int i = 0; i < adj.length && deepCopy; i++) {
+            Bag<Integer> integers = graph.adj[i];
+            Iterator<Integer> iterator = integers.iterator();
+            Bag<Integer> bag = new Bag<>();
+            while(iterator.hasNext()){
+                Integer next = iterator.next();
+                bag.add(next);
+                if(!(hasEdge(i, next))) {
+                    E++;
+                }
+            }
+            adj[i] = bag;
+        }
+    }
+
+    private boolean hasEdge(int v, int w) {
+        return innerHasEdge(v, w) || innerHasEdge(w, v);
+    }
+
+    private boolean innerHasEdge(int w, int v){
+        return Optional.ofNullable(adj[v]).map(e -> {
+            for (Integer integer : e) {
+                if (integer == w) {
+                    return true;
+                }
+            }
+            return false;
+        }).orElse(false);
     }
 
     public Graph(Graph G) {

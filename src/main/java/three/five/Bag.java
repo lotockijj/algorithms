@@ -61,4 +61,15 @@ public class Bag<Item> implements Iterable<Item> {
     public String toString() {
         return first.item.toString();
     }
+
+    public boolean contains(Bag<Item> item){
+        boolean result = false;
+        Iterator<Item> iterator = iterator();
+        while (iterator.hasNext()){
+            if(item == iterator.next()){
+                result = true;
+            }
+        }
+        return result;
+    }
 }
