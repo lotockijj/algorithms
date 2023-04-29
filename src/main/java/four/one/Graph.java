@@ -120,6 +120,9 @@ public class Graph {
     public void addEdge(int v, int w) {
         validateVertex(v);
         validateVertex(w);
+        if(v == w || hasEdge(v, w)) {
+            return;
+        }
         E++;
         adj[v].add(w);
         adj[w].add(v);
