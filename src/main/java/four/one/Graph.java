@@ -9,6 +9,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Stack;
 
+//4.1.5 Modify Graph to disallow parallel edges and self-loops.
+
 public class Graph {
     private static final String NEWLINE = System.getProperty("line.separator");
     private int V;
