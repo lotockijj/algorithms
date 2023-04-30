@@ -1,5 +1,7 @@
 package four.one;
 
+import edu.princeton.cs.algs4.StdOut;
+
 public class DepthFirstSearch {
     private boolean[] marked;
     private int count;
@@ -10,6 +12,7 @@ public class DepthFirstSearch {
     }
 
     private void dfs(Graph G, int v) {
+        StdOut.print(v + ", ");
         marked[v] = true;
         count++;
         for (int w : G.adj(v)){
