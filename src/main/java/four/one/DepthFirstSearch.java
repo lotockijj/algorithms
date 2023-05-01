@@ -12,7 +12,7 @@ public class DepthFirstSearch {
     }
 
     private void dfs(Graph G, int v) {
-        StdOut.print(v + ", ");
+        //StdOut.print(v + ", ");
         marked[v] = true;
         count++;
         for (int w : G.adj(v)){

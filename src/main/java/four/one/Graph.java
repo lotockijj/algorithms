@@ -130,6 +130,13 @@ public class Graph {
         adj[w].add(v);
     }
 
+    // TODO:Write jUnit for this method
+    public void deleteEdge(int v, int w){
+        adj[v].delete(w);
+        adj[w].delete(v);
+        E--;
+    }
+
     public Iterable<Integer> adj(int v) {
         validateVertex(v);
         return adj[v];
@@ -185,5 +192,17 @@ public class Graph {
         //In in = new In("tinyG.txt");
         Graph G = new Graph(in);
         StdOut.println(G);
+    }
+
+    public int getV() {
+        return V;
+    }
+
+    public int getE() {
+        return E;
+    }
+
+    public Bag<Integer>[] getAdj() {
+        return adj;
     }
 }
