@@ -69,6 +69,34 @@ public class Graph {
         }
     }
 
+    public Graph(String stream) {
+        In in = new In(stream);
+        String[] vertexes_edges = in.readLine().split(" ");
+        this.V = Integer.parseInt(vertexes_edges[0]);
+        this.E = Integer.parseInt(vertexes_edges[1]);
+        adj = (Bag<Integer>[]) new Bag[V];
+        while (in.hasNextLine()) { // builds the index
+            String[] vertexesAsStrings = in.readLine().split(" ");
+            int v = Integer.parseInt(vertexesAsStrings[0]);
+            if(adj[v] == null) {
+                adj[v] = new Bag<>();
+            }
+            for (int i = 1; i < vertexesAsStrings.length; i++) {
+                int w = Integer.parseInt(vertexesAsStrings[i]);
+                adj[v].add(w);
+                if(adj[w] == null){
+                    adj[w] = new Bag<>();
+                    adj[w].add(v);
+                } else {
+                    if(!adj[w].contains(v)){
+                        adj[w].add(v);
+                    }
+                }
+
+            }
+        }
+    }
+
     private boolean hasEdge(int v, int w) {
         return innerHasEdge(v, w) || innerHasEdge(w, v);
     }
