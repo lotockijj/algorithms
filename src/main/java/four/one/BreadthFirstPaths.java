@@ -8,10 +8,12 @@ public class BreadthFirstPaths{
     private boolean[] marked; // Is a shortest path to this vertex known?
     private int[] edgeTo; // last vertex on known path to this vertex
     private final int s; // source
+    private final int[] distTo;
 
     public BreadthFirstPaths(Graph G, int s) {
         marked = new boolean[G.V()];
         edgeTo = new int[G.V()];
+        distTo = new int[G.V()];
         this.s = s;
         bfs(G, s);
     }
@@ -28,6 +30,7 @@ public class BreadthFirstPaths{
                     edgeTo[w] = v; // save last edge on a shortest path,
                     marked[w] = true; // mark it because path is known,
                     queue.enqueue(w); // and add it to the queue.
+                    distTo[w] = distTo[v] + 1;
                 }
         }
     }
@@ -44,4 +47,10 @@ public class BreadthFirstPaths{
         path.push(s);
         return path;
     }
+
+    public int distTo(int v){
+        return distTo[v];
+    }
+
+
 }
