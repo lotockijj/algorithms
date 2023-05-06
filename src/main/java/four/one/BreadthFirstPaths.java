@@ -27,7 +27,7 @@ public class BreadthFirstPaths{
     }
 
     private void bfs(Graph G, int s) {
-        Queue<Integer> queue = new Queue<Integer>();
+        Queue<Integer> queue = new Queue();
         marked[s] = true; // Mark the source
         queue.enqueue(s); // and put it on the queue.
         while (!queue.isEmpty()){
@@ -35,7 +35,7 @@ public class BreadthFirstPaths{
             for (int w : G.adj(v))
                 if (!marked[w]) // For every unmarked adjacent vertex,
                 {
-                    edgeTo[w] = v; // save last edge on a shortest path,
+                    edgeTo[w] = v; // save last edge on the shortest path,
                     marked[w] = true; // mark it because path is known,
                     queue.enqueue(w); // and add it to the queue.
                     distTo[w] = distTo[v] + 1;

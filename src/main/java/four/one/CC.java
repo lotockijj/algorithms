@@ -47,7 +47,7 @@ public class CC {
         Bag<Integer>[] components;
         components = (Bag<Integer>[]) new Bag[M];
         for (int i = 0; i < M; i++) {
-            components[i] = new Bag<Integer>();
+            components[i] = new Bag<>();
         }
         for (int v = 0; v < G.V(); v++) {
             components[cc.id(v)].add(v);
