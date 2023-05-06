@@ -37,6 +37,22 @@ public class Cycle {
     }
 
     public int getGirth() {
-        return Arrays.stream(cycles).filter(e -> e != 0).min().orElse(-1);
+        return Arrays.stream(cycles).filter(e -> e != 0 && e != 1).min().orElse(-1);
+    }
+
+    public boolean[] getMarked() {
+        return marked;
+    }
+
+    public boolean isHasCycle() {
+        return hasCycle;
+    }
+
+    public int getLenOfCycle() {
+        return lenOfCycle;
+    }
+
+    public int[] getCycles() {
+        return cycles;
     }
 }
